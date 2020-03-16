@@ -11,12 +11,19 @@ addons:
   apt:
     update: true
 
+before_install:
+  - cd jenkins
+  - make jocker
+
 before_script:
+  - cd ..
   - make pull-base
 
 script:
   - make build
 
 after_success:
+  - make agent
+  - make test || travis_terminate 1
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" ]; then make release; fi
