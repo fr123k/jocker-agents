@@ -5,7 +5,7 @@ export IMAGE="${NAME}:${VERSION}"
 export LATEST="${NAME}:latest"
 
 API_TOKEN=$(shell docker logs $(shell docker ps -f name=jocker -q) | grep 'Api-Token:' | tr ':' '\n' | tail -n +2)
-DOCKER_HOST=$(shell ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+')
+JOCKER_HOST?=$(shell ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+')
 
 pull-base:  ## Push docker image to docker hub
 	docker pull jenkinsci/jnlp-slave:latest
@@ -23,7 +23,7 @@ help: ## Print this help.
 
 agent:
 	echo "API-Token: ${API_TOKEN}"
-	docker run -d --name agent --rm $(IMAGE) -url http://$(DOCKER_HOST):8080 $(shell curl -L -s http://admin:$(API_TOKEN)@localhost:8080/computer/docker-1/slave-agent.jnlp | sed "s/.*<application-desc main-class=\"hudson.remoting.jnlp.Main\"><argument>\([a-z0-9]*\).*/\1/") docker-1
+	docker run -d --name agent --rm $(IMAGE) -url http://$(JOCKER_HOST):8080 $(shell curl -L -s http://admin:$(API_TOKEN)@localhost:8080/computer/docker-1/slave-agent.jnlp | sed "s/.*<application-desc main-class=\"hudson.remoting.jnlp.Main\"><argument>\([a-z0-9]*\).*/\1/") docker-1
 
 test:
 	docker ps
