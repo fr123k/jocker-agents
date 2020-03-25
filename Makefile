@@ -6,6 +6,8 @@ export LATEST="${NAME}:latest"
 
 API_TOKEN=$(shell docker logs $(shell docker ps -f name=jocker -q) | grep 'Api-Token:' | tr ':' '\n' | tail -n +2)
 JOCKER_HOST?=$(shell ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+')
+SEED_BRANCH_RAW=$(shell [ -z "${TRAVIS_PULL_REQUEST_BRANCH}" ] && echo "${TRAVIS_BRANCH}"|| echo "${TRAVIS_PULL_REQUEST_BRANCH}")
+SEED_BRANCH=$(shell echo "${SEED_BRANCH_RAW}" | sed s/\\//\\%2F/g)
 
 pull-base:  ## Push docker image to docker hub
 	docker pull jenkinsci/jnlp-slave:latest
@@ -43,6 +45,8 @@ test:
 	@curl -s http://admin:$(API_TOKEN)@localhost:8080/job/Jenkins/job/Setup/lastBuild/consoleText
 	@curl -s http://admin:$(API_TOKEN)@localhost:8080/job/Jenkins/job/Setup/lastBuild/api/json | jq -r .result | grep SUCCESS
 
+	@curl -s http://admin:$(API_TOKEN)@localhost:8080/job/Pulumi/indexing/consoleText
+
 	docker logs `docker ps -a -q -f name=agent`
-	./scripts/jenkins-cli.sh pulumi $(API_TOKEN)
-	@curl -s http://admin:$(API_TOKEN)@localhost:8080/job/pulumi/lastBuild/api/json | jq -r .result | grep SUCCESS
+	./scripts/jenkins-cli.sh Pulumi/job/${SEED_BRANCH} $(API_TOKEN)
+	@curl -s http://admin:$(API_TOKEN)@localhost:8080/job/Pulumi/job/${SEED_BRANCH}/lastBuild/api/json | jq -r .result | grep SUCCESS
