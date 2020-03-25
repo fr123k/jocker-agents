@@ -21,12 +21,14 @@ release: ## Push docker image to docker hub
 help: ## Print this help.
 	@grep -E '^[a-zA-Z._-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-agent:
+jocker-ready:
 	echo "API-Token: ${API_TOKEN}"
 	./scripts/jenkins-wait.sh Jenkins/job/Setup
 	sleep 30
-	docker run -d --name agent --rm $(IMAGE) -url http://$(JOCKER_HOST):8080 $(shell curl -L -s http://admin:$(API_TOKEN)@localhost:8080/computer/docker-1/slave-agent.jnlp | sed "s/.*<application-desc main-class=\"hudson.remoting.jnlp.Main\"><argument>\([a-z0-9]*\).*/\1/") docker-1
+
+agent:
 	curl http://admin:$(API_TOKEN)@localhost:8080/computer/docker-1/slave-agent.jnlp
+	docker run -d --name agent --rm $(IMAGE) -url http://$(JOCKER_HOST):8080 $(shell curl -L -s http://admin:$(API_TOKEN)@localhost:8080/computer/docker-1/slave-agent.jnlp | sed "s/.*<application-desc main-class=\"hudson.remoting.jnlp.Main\"><argument>\([a-z0-9]*\).*/\1/") docker-1
 	docker logs `docker ps -a -q -f name=agent`
 
 test:

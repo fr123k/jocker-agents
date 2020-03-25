@@ -7,8 +7,11 @@ pipelineJob("Pulumi") {
         cps {
             script("""
 node ("docker-1") {
+    sh("bash --version")
+    sh("make --version")
     sh("go version")
     sh("pulumi version")
+    sh("pwgen")
 }
             """)
         }
