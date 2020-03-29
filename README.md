@@ -10,12 +10,29 @@ in [jocker](https://github.com/fr123k/jocker).
 
 ## Agents
 
-### Golang with pulumi
+### Golang
 
 This docker image provide an ready to use jnlp jenkins agents with golang support.
 
+* installed make
 * installed golang 1.12
-* installed pulumi latest version at build time
+
+### Pulumi
+
+This docker image provide an ready to use jnlp jenkins agents with pulumi support.
+
+* installed make
+* installed golang 1.12
+* installed pulumi 1.13.x
+* installed pwgen
+* installed jq
+
+### Packer
+
+This docker image provide an ready to use jnlp jenkins agents with pulumi support.
+
+* installed make
+* installed packer 1.5.5
 
 ## Build
 

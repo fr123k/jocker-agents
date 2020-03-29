@@ -5,9 +5,29 @@ jenkins:
     # Deploy
     ########
     - permanent:
-        name: "docker-1"
-        labelString: "docker"
-        nodeName: "docker-1"
+        name: "golang-1"
+        labelString: "golang"
+        nodeName: "golang-1"
+        remoteFS: "/home/jenkins"
+        numExecutors: 2
+        launcher:
+          jnlp:
+            workDirSettings:
+              failIfWorkDirIsMissing: false
+    - permanent:
+        name: "pulumi-1"
+        labelString: "pulumi"
+        nodeName: "pulumi-1"
+        remoteFS: "/home/jenkins"
+        numExecutors: 2
+        launcher:
+          jnlp:
+            workDirSettings:
+              failIfWorkDirIsMissing: false
+    - permanent:
+        name: "packer-1"
+        labelString: "packer"
+        nodeName: "packer-1"
         remoteFS: "/home/jenkins"
         numExecutors: 2
         launcher:

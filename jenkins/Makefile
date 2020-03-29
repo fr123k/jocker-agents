@@ -3,6 +3,7 @@ export IMAGE="fr123k/jocker"
 SEED_BRANCH=$(shell [ -z "${TRAVIS_PULL_REQUEST_BRANCH}" ] && echo "${TRAVIS_BRANCH}"|| echo "${TRAVIS_PULL_REQUEST_BRANCH}")
 
 jocker: ## Start the jenkins in docker container short jocker.
+	docker kill jocker || echo "Ignore failure"
 	docker pull ${IMAGE}
 	docker run -d -e SEED_JOB_GIT_REPO=fr123k/jocker-agents -e SEED_JOB_GROOVY_FILE=jenkins/dsl/pipeline-jobs.groovy -e SEED_BRANCH_JOBS=${SEED_BRANCH} -e SEED_BRANCH_CONFIGURE=${SEED_BRANCH_CONFIGURE} -p 50000:50000 -p 8080:8080 --name jocker --rm ${IMAGE}
 

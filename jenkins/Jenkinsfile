@@ -1,7 +1,20 @@
-node ("docker-1") {
+node ("golang") {
+    sh("bash --version")
+    sh("make --version")
+    sh("go version")
+}
+
+node ("pulumi") {
     sh("bash --version")
     sh("make --version")
     sh("go version")
     sh("pulumi version")
     sh("pwgen")
+    sh("jq --version")
+}
+
+node ("packer") {
+    sh("bash --version")
+    sh("make --version")
+    sh("packer version")
 }

@@ -24,7 +24,7 @@ script:
 
 after_success:
   - make jocker-ready
-  - make agent
+  - make agents
   - make test || travis_terminate 1
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" ]; then make release; fi

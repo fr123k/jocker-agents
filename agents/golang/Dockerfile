@@ -10,11 +10,9 @@ USER root
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y make pwgen jq
+    apt-get install -y make
 
 USER jenkins
-
-RUN curl -fsSL https://get.pulumi.com/ | sh
     
 ARG GO_BASE_PATH=/usr/local/go
 
