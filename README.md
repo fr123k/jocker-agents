@@ -22,3 +22,7 @@ This docker image provide an ready to use jnlp jenkins agents with golang suppor
 ```bash
 make build
 ```
+
+## TODO
+
+* setup GOPATH as volume to support mount for caching
