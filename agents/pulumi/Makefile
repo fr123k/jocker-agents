@@ -1,4 +1,4 @@
-VERSION=$(shell docker image inspect jenkinsci/jnlp-slave:latest | jq -r '.[0].ContainerConfig.Labels.Version')
+VERSION?=$(shell docker image inspect jenkinsci/jnlp-slave:latest | jq -r '.[0].ContainerConfig.Labels.Version')
 CONTAINER_NAME=pulumi-agent
 export NAME=fr123k/jocker-agents-pulumi
 export IMAGE="${NAME}:${VERSION}"

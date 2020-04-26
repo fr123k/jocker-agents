@@ -18,3 +18,8 @@ node ("packer") {
     sh("make --version")
     sh("packer version")
 }
+
+node ("maven") {
+    sh("make --version")
+    sh("mvn --version")
+}

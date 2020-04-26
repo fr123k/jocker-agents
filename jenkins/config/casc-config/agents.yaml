@@ -34,3 +34,13 @@ jenkins:
           jnlp:
             workDirSettings:
               failIfWorkDirIsMissing: false
+    - permanent:
+        name: "maven-1"
+        labelString: "maven"
+        nodeName: "maven-1"
+        remoteFS: "/home/jenkins"
+        numExecutors: 2
+        launcher:
+          jnlp:
+            workDirSettings:
+              failIfWorkDirIsMissing: false

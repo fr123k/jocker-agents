@@ -1,5 +1,5 @@
 
-VERSION=$(shell docker image inspect jenkinsci/jnlp-slave:latest | jq -r '.[0].ContainerConfig.Labels.Version')
+VERSION?=$(shell docker image inspect jenkinsci/jnlp-slave:latest | jq -r '.[0].ContainerConfig.Labels.Version')
 CONTAINER_NAME=golang-agent
 export NAME=fr123k/jocker-agents-golang
 export IMAGE="${NAME}:${VERSION}"

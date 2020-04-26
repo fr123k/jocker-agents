@@ -1,6 +1,7 @@
+
 VERSION?=$(shell docker image inspect jenkinsci/jnlp-slave:latest | jq -r '.[0].ContainerConfig.Labels.Version')
-CONTAINER_NAME=packer-agent
-export NAME=fr123k/jocker-agents-packer
+CONTAINER_NAME=maven-agent
+export NAME=fr123k/jocker-agents-maven
 export IMAGE="${NAME}:${VERSION}"
 export LATEST="${NAME}:latest"
 
@@ -26,8 +27,8 @@ jocker-ready:
 	sleep 30
 
 agent:
-	curl http://admin:$(API_TOKEN)@localhost:8080/computer/packer-1/slave-agent.jnlp
-	docker run -d --name agent$(CONTAINER_NAME) --rm $(IMAGE) -url http://$(JOCKER_HOST):8080 $(shell curl -L -s http://admin:$(API_TOKEN)@localhost:8080/computer/packer-1/slave-agent.jnlp | sed "s/.*<application-desc main-class=\"hudson.remoting.jnlp.Main\"><argument>\([a-z0-9]*\).*/\1/") packer-1
+	curl http://admin:$(API_TOKEN)@localhost:8080/computer/golang-1/slave-agent.jnlp
+	docker run -d --name $(CONTAINER_NAME) --rm $(IMAGE) -url http://$(JOCKER_HOST):8080 $(shell curl -L -s http://admin:$(API_TOKEN)@localhost:8080/computer/golang-1/slave-agent.jnlp | sed "s/.*<application-desc main-class=\"hudson.remoting.jnlp.Main\"><argument>\([a-z0-9]*\).*/\1/") golang-1
 	docker logs `docker ps -q -f name=${CONTAINER_NAME}`
 
 logs:
