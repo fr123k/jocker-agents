@@ -21,4 +21,4 @@ RUN go build main.go && \
     ./main && \
     pulumi version
 
-LABEL maintainer="info@mjslabs.com"
+LABEL maintainer="frank.ittermann@yahoo.de"

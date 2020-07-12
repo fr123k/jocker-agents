@@ -30,4 +30,4 @@ COPY --chown=jenkins main.go ${HOME}
 RUN go build main.go && \
     ./main
 
-LABEL maintainer="info@mjslabs.com"
+LABEL maintainer="frank.ittermann@yahoo.de"

@@ -1,8 +1,7 @@
-ARG ARCH=linux_amd64
-ARG PACKER_VERSION=1.5.5
-
 FROM jenkinsci/jnlp-slave:latest
 
+ARG ARCH=linux_amd64
+ARG PACKER_VERSION=1.6.0
 
 USER root
 
@@ -14,12 +13,13 @@ RUN apt-get update && \
 USER jenkins
 
 # TODO: checksum checks
-# RUN curl -Lo /tmp/packer.zip https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_${ARCH}.zip && \
-RUN curl -Lo /tmp/packer.zip https://releases.hashicorp.com/packer/1.5.5/packer_1.5.5_linux_amd64.zip
+RUN curl -Lo /tmp/packer.zip https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip \
+    && ls -lha /tmp
 
 USER root
 
-RUN unzip /tmp/packer.zip -d /tmp && \
+RUN ls -lha /tmp && \
+    unzip /tmp/packer.zip -d /tmp && \
     cp /tmp/packer /usr/local/bin/packer && \
     rm /tmp/packer.zip && \
     packer version
@@ -31,4 +31,4 @@ ENV HOME /home/jenkins
 
 WORKDIR ${HOME}
 
-LABEL maintainer="info@mjslabs.com"
+LABEL maintainer="frank.ittermann@yahoo.de"

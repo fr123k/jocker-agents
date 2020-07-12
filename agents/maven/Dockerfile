@@ -24,4 +24,6 @@ USER jenkins
 
 WORKDIR ${HOME}
 
+LABEL maintainer="frank.ittermann@yahoo.de"
+
 RUN mvn --version

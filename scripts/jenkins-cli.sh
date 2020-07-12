@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MAX_ATTEMPS=10
+MAX_ATTEMPS=15
 JOB_URL=http://admin:$2@localhost:8080/job/$1
 JOB_STATUS_URL=${JOB_URL}/lastBuild/api/json
 JOB_CONSOLE_URL=${JOB_URL}/lastBuild/consoleText

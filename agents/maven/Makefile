@@ -5,6 +5,7 @@ export NAME=fr123k/jocker-agents-maven
 export IMAGE="${NAME}:${VERSION}"
 export LATEST="${NAME}:latest"
 
+AGENT_NAME=maven-1
 API_TOKEN=$(shell docker logs $(shell docker ps -f name=jocker -q) | grep 'Api-Token:' | tr ':' '\n' | tail -n +2)
 JOCKER_HOST?=$(shell ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+')
 SEED_BRANCH_RAW=$(shell [ -z "${TRAVIS_PULL_REQUEST_BRANCH}" ] && echo "${TRAVIS_BRANCH}"|| echo "${TRAVIS_PULL_REQUEST_BRANCH}")
@@ -27,8 +28,8 @@ jocker-ready:
 	sleep 30
 
 agent:
-	curl http://admin:$(API_TOKEN)@localhost:8080/computer/golang-1/slave-agent.jnlp
-	docker run -d --name $(CONTAINER_NAME) --rm $(IMAGE) -url http://$(JOCKER_HOST):8080 $(shell curl -L -s http://admin:$(API_TOKEN)@localhost:8080/computer/golang-1/slave-agent.jnlp | sed "s/.*<application-desc main-class=\"hudson.remoting.jnlp.Main\"><argument>\([a-z0-9]*\).*/\1/") golang-1
+	curl http://admin:$(API_TOKEN)@localhost:8080/computer/$(AGENT_NAME)/slave-agent.jnlp
+	docker run -d --name $(CONTAINER_NAME) --rm $(IMAGE) -url http://$(JOCKER_HOST):8080 $(shell curl -L -s http://admin:$(API_TOKEN)@localhost:8080/computer/$(AGENT_NAME)/slave-agent.jnlp | sed "s/.*<application-desc main-class=\"hudson.remoting.jnlp.Main\"><argument>\([a-z0-9]*\).*/\1/") $(AGENT_NAME)
 	docker logs `docker ps -q -f name=${CONTAINER_NAME}`
 
 logs:
