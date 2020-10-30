@@ -23,3 +23,8 @@ node ("maven") {
     sh("make --version")
     sh("mvn --version")
 }
+
+node ("maven-jenkins-plugin") {
+    sh("make --version")
+    sh("mvn --version")
+}

@@ -1,4 +1,4 @@
-ARG MVN_VERSION=3.3-jdk-8
+ARG MVN_VERSION=3.6.3-jdk-8
 
 FROM maven:${MVN_VERSION} as src
 
