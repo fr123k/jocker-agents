@@ -1,7 +1,7 @@
 FROM jenkinsci/jnlp-slave:latest
 
 ARG ARCH=linux_amd64
-ARG PACKER_VERSION=1.6.0
+ARG PACKER_VERSION=1.6.4
 
 USER root
 
