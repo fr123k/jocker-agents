@@ -1,4 +1,4 @@
-multibranchPipelineJob("Pulumi") {
+multibranchPipelineJob("Jocker-Agents") {
     orphanedItemStrategy {
         discardOldItems {
             numToKeep(0)

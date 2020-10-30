@@ -37,7 +37,7 @@ test: logs
 	@curl -s http://admin:$(API_TOKEN)@localhost:8080/job/Jenkins/job/Setup/lastBuild/consoleText
 	@curl -s http://admin:$(API_TOKEN)@localhost:8080/job/Jenkins/job/Setup/lastBuild/api/json | jq -r .result | grep SUCCESS
 
-	@curl -s http://admin:$(API_TOKEN)@localhost:8080/job/Pulumi/indexing/consoleText
+	@curl -s http://admin:$(API_TOKEN)@localhost:8080/job/Jocker-Agents/indexing/consoleText
 
-	./scripts/jenkins-cli.sh Pulumi/job/${SEED_BRANCH} $(API_TOKEN)
-	@curl -s http://admin:$(API_TOKEN)@localhost:8080/job/Pulumi/job/${SEED_BRANCH}/lastBuild/api/json | jq -r .result | grep SUCCESS
+	./scripts/jenkins-cli.sh Jocker-Agents/job/${SEED_BRANCH} $(API_TOKEN)
+	@curl -s http://admin:$(API_TOKEN)@localhost:8080/job/Jocker-Agents/job/${SEED_BRANCH}/lastBuild/api/json | jq -r .result | grep SUCCESS
