@@ -1,7 +1,15 @@
+FROM fr123k/jocker-agents-golang:latest AS packer-provisioner-goss
+
+WORKDIR /tmp
+RUN git clone https://github.com/fr123k/packer-provisioner-goss.git && \
+    cd packer-provisioner-goss && \
+    go build
+
 FROM jenkinsci/jnlp-slave:latest
 
+
 ARG ARCH=linux_amd64
-ARG PACKER_VERSION=1.6.4
+ARG PACKER_VERSION=1.6.5
 
 USER root
 
@@ -20,9 +28,15 @@ USER root
 
 RUN ls -lha /tmp && \
     unzip /tmp/packer.zip -d /tmp && \
-    cp /tmp/packer /usr/local/bin/packer && \
-    rm /tmp/packer.zip && \
+    mv /tmp/packer /usr/local/bin/packer && \
     packer version
+
+COPY --from=packer-provisioner-goss /tmp/packer-provisioner-goss/packer-provisioner-goss /tmp
+
+RUN mkdir -p /home/jenkins/.packer.d/plugins/ && \
+    mv /tmp/packer-provisioner-goss /home/jenkins/.packer.d/plugins/
+
+# RUN curl -fsSL https://goss.rocks/install | sh
 
 USER jenkins
 
