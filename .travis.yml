@@ -2,17 +2,17 @@ os: linux
 arch: arm64-graviton2
 
 sudo: required
-env:
-  global:
-    - secure: 61VMPNg0e4SjVCuHR2Agvx43J9PzqDZHKspkCyU4ml+ypB1XjW8M8FM00v8COg/AfJUzWx25irsaRoQeCNyOlOLi7W7JvAmiJ9tJlkj40JDY79Hdx3NpdwGJ9U57Twup+TSHpf9XdMAv7cH4JnOXc8XUkSVjnwcH+ggSslofVdfe+wC+DxHOKgDonjnyuxDWBO4Jtpdl0jveo/dg1hYIQw3H6DskQgM8T2bbdDnHTFnzUkivdUSQkMFIU8frUvYqxLGS/PYinvcBRvb+AuucmDQvRIibsD5Hi3KqqYlceXJbozkzEPlS25UCt9pHsVFbhEhJ4/+WAla8RO3znjR8oitzRQxWcwGBApLTZJQJKSJOF++SopA2KM3lmkYJzxFvYIZpAdLtfFfOp403ydHmaEcCQSiDKUmCbBMQQHQNW7ndisEkTQw4XaD3N0QV0lymOIPhQVB/AL9i2tUFekqxke81mlfptsi6wEqx0VJPlZ8/O/q7b9iFjmW47oaMDr5TyRKeX57Zhp2IH7bQE6d6SK4iUuFvgmAHwDMVqppuAM+v8mZ7AQmU2ERff0ueOu7AkmcAMmkuNAtquyLON8WqLM8rYi4NXjESy4LDGw+MmQ54E6b1FU3P1ciO+A7xpu6U2rr4kbN2PzKRFhwCjyaNwFbE9TR4H4kYXJCYL8xqqoI=
-    - secure: MFfigCYgOlmlP87+VW1YenKDUt6N+ODrd29wV/OeTI3WgWcwhzso8f/brVcNfUws0I8Qdzs3mEDbVL7HrpXkgSmlIk2Nir5gn0tkxjeAGFPr6YtE2BCSE8NcSyITNOurmJTeeva8I+m9zo/6eJP0ZkSJ2hsnjgLZG1UD8kzQ/mgHiNVG8o1i+mlO8jgcm8uhj0MLKY+sEeRinfze9pZKxS3DzqlXj/K/Te64rpA6q5PU3mFwnPGHzrZGoeRi8QIA4dNcQMn8HDgQI/KbyaMzULlFQYRU/C+pYB/eM+k0iKeXdHK6vil1SuyPrHLg4EuErSQuqEnAvfIsiY4qvN8kkZ90P49p0UlIHJsl6EbocOVll+WXxzPW5lamX/gLkWf0rks0yWO4SePSeDTV7HXl2cFwMa60fD8QOtVoqOtrarI9mbJ09JsviejKRGoXa5PKVf7cvP8WgOEGHKV+c90kdAvWu9up2Y9Sq0bXqpNsdsiunNKfTsW1hS8TkhYNisUv0F51maIirTQTQYI/jBI9w1ck9prHe7JuVHaIKyxAsThFuzb+3I2kaNQmDQ3TuIdleGW+E92YpwRKBhjbzZyXYtK2Ra3de5JHVUf+YatzDCa9MupnrLNzVSFBE1g5DXoj66hEcrpf/AFlxDLPcVY0r676mUYUt75p1JiHasT4CAM=
-
 services:
   - docker
 
 addons:
   apt:
     update: true
+
+env:
+  global:
+    - secure: LevFH7UVZoGu+6SPPAU9J7BLbfPeDkf8bsqSHnVGGcwOZN4Z8NH8QQvCeFa/ceULYjd1HQqlRcE5FO6et+BfK/aeXhCb8gjFYO/HblYFhzUddVrtqVVlA6H+q59+B9SddbFXH0wZ3B8KZ63oCRpjDJB4Fln0zwLbQYLpRCCB3jgE40jQtkA/uuYIYlKypbz+mMNFNY4ntOImFz1cSv9PMtOXFknbWz+OR4sQMSt3qtMvllFg+4/gEL5h377lbk3C4g7aomM62y/cCGKfS3EKJzzaT0fhOcxXBPWhBqR6leL2u418oMjMlOgCgYYAtCqqzyZzJQ3pl7RUxhxkaaedPSv0gQxZMTVvKjJgrsiWF+0ORWKLIP/RzImuRSVjlh44T5NyH0fuVN13XbSBDAphnM06p/ck8rfEOnPHjRAQsH00/J0bRCWHlsW2+c2TixpXyR6zso2uT5Cavi3z0KH3jZwaDVRg6Evj2OBSH1cYIV/97XKxF2bw4IDkPO/RsWhKaFpFS+3yjnOxYqmuSZCP8/nHzYDUwcFiA6t558jHT3/XxVMurqZGJXhfA+X4ohyHtO2zqAlEXwrYfvHDPbWjsiEKkl4ERnF4Exzb7vcSzdFGg3tEz98D+03qTNpvPwqmuzzDlsDKo3wROTHiKLWSQyR1ToxoxX0pQ3iGY2zaO8o=
+    - secure: jZkPSTR85dZjuCUehptreSGOImPX59+qZspGt27e33N8GuIJ07kLIt/xD0BO5VtCNiBIJZsY3R0Z58gmgRZXMouZwYzaGihhwQqmIVhLkeF3I2mjVqDCzU4bqUwfod/AvqiZ9zOz+ASwL7M8vR3N3IDVS20oVza8hXztbfpI9qa/2xoG3w5nF6MT1JEhfXHiertU8F9uhvsNM6UQod54X6lPLrYB1HNg6PAst7rWh0aBdnQHurmIyxhRgMtOwEXSi/BEZfsEGujUE0Czp04cevuSUteGhcV45EF78tBAPThKj3JxAmnXJUhMvuBefq+/cfrHGEK+hl9cSldnKUJCVEk6q5Pn4XKWYo85mHtr8jR/QxyyzepE9GAvdnFm4g78ULyLdA2cn0bw8Wa4J1Khrq/KcxW5qXd6Z6FovfKW5Bv5cXA66xndw77FG0lNyGtilnHeY1w4Gquw1+be/7qU+I5RbWa5HFX8M3rYZVb5bEqWcVEIHFVs6CZr/STLyuRrgtstyAmQTqzcPLsqwXFrBrNUwBnLyP5AgOLz7ZyEGn2Rnf40MU5KvF8tBqm2cCDQqnn8eosTEbKSmVfKGJ8woDcSCAh5Xk+Fk34m075o9w9V0dKIex6lrqB0eGBHdUWv0jtRhbFHGOwacZW1qlhCW6eDzgCrSr2yr5MM5gynGHQ=
 
 before_install:
   - cd jenkins
@@ -29,5 +29,7 @@ after_success:
   - make jocker-ready
   - make agents
   - make test || travis_terminate 1
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" ]; then make release; fi
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME"
+    --password-stdin
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" ]; then
+    make release; fi
